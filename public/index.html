@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyUniMate - Student Productivity Toolbox</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">🎓 MyUniMate</div>
+                <button class="theme-toggle" id="themeToggle" title="Toggle Dark Mode">🌙</button>
+            </div>
+            <nav class="sidebar-nav" id="sidebarNav">
+                <!-- Dynamically populated -->
+            </nav>
+            <div class="sidebar-footer">
+                <p>CS23633 Cloud Computing</p>
+                <p class="version">v1.0.0</p>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Dashboard -->
+            <section id="dashboard" class="tool-section active">
+                <div class="tool-header">
+                    <h1>Welcome to MyUniMate</h1>
+                    <p>Your unified student productivity platform</p>
+                </div>
+                <div class="dashboard-summary" id="dashboardSummary">
+                    <div class="summary-card">
+                        <div class="summary-title">Storage</div>
+                        <div class="summary-value" id="dashboardFilesCount">0 files</div>
+                        <div class="summary-meta" id="dashboardStorageUsed">0 MB used</div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="summary-title">Tasks</div>
+                        <div class="summary-value" id="dashboardTasksCount">0 pending</div>
+                        <div class="summary-meta">Quick to-dos ready</div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="summary-title">Notes</div>
+                        <div class="summary-value" id="dashboardNotesLength">0 characters</div>
+                        <div class="summary-meta">Saved locally</div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="summary-title">Focus</div>
+                        <div class="summary-value" id="dashboardFocusLabel">Ready to work</div>
+                        <div class="summary-meta">Open Pomodoro to start</div>
+                    </div>
+                </div>
+                <div class="dashboard-quick-actions">
+                    <button class="btn btn-secondary" id="quickUploadBtn">Upload file</button>
+                    <button class="btn btn-secondary" id="quickTodoBtn">Add task</button>
+                    <button class="btn btn-secondary" id="quickNotesBtn">Open notes</button>
+                    <button class="btn btn-secondary" id="quickTimerBtn">Start timer</button>
+                </div>
+                <div class="dashboard-grid" id="dashboardGrid">
+                    <!-- Dynamically populated -->
+                </div>
+            </section>
+
+            <!-- Translator -->
+            <section id="translator" class="tool-section">
+                <div class="tool-header">
+                    <h1>📜 Translator</h1>
+                    <p>Translate text to any language</p>
+                </div>
+                <div class="tool-content">
+                    <div class="translator-container">
+                        <div class="translator-group">
+                            <label>From Language:</label>
+                            <select id="sourceLang">
+                                <option value="auto">Auto-detect</option>
+                                <option value="en">English</option>
+                                <option value="es">Spanish</option>
+                                <option value="fr">French</option>
+                                <option value="de">German</option>
+                                <option value="it">Italian</option>
+                                <option value="pt">Portuguese</option>
+                                <option value="ru">Russian</option>
+                                <option value="ja">Japanese</option>
+                                <option value="ko">Korean</option>
+                                <option value="zh-Hans">Chinese</option>
+                                <option value="ar">Arabic</option>
+                                <option value="hi">Hindi</option>
+                            </select>
+                        </div>
+                        <div class="translator-group">
+                            <label>To Language:</label>
+                            <select id="targetLang">
+                                <option value="es">Spanish</option>
+                                <option value="en">English</option>
+                                <option value="fr">French</option>
+                                <option value="de">German</option>
+                                <option value="it">Italian</option>
+                                <option value="pt">Portuguese</option>
+                                <option value="ru">Russian</option>
+                                <option value="ja">Japanese</option>
+                                <option value="ko">Korean</option>
+                                <option value="zh-Hans">Chinese</option>
+                                <option value="ar">Arabic</option>
+                                <option value="hi">Hindi</option>
+                            </select>
+                        </div>
+                    </div>
+                    <textarea id="translatorInput" placeholder="Enter text to translate..." rows="6"></textarea>
+                    <button class="btn btn-primary" id="translateBtn">Translate</button>
+                    <div id="translatorOutput" class="output-box"></div>
+                </div>
+            </section>
+
+            <!-- Calculator -->
+            <section id="calculator" class="tool-section">
+                <div class="tool-header">
+                    <h1>🧮 Calculator</h1>
+                    <p>Basic and scientific calculations</p>
+                </div>
+                <div class="tool-content">
+                    <div class="calculator">
+                        <div class="calc-display" id="calcDisplay">0</div>
+                        <div class="calc-buttons">
+                            <button class="calc-btn" onclick="appendToCalc('7')">7</button>
+                            <button class="calc-btn" onclick="appendToCalc('8')">8</button>
+                            <button class="calc-btn" onclick="appendToCalc('9')">9</button>
+                            <button class="calc-btn btn-op" onclick="appendToCalc('/')">÷</button>
+                            <button class="calc-btn" onclick="appendToCalc('4')">4</button>
+                            <button class="calc-btn" onclick="appendToCalc('5')">5</button>
+                            <button class="calc-btn" onclick="appendToCalc('6')">6</button>
+                            <button class="calc-btn btn-op" onclick="appendToCalc('*')">×</button>
+                            <button class="calc-btn" onclick="appendToCalc('1')">1</button>
+                            <button class="calc-btn" onclick="appendToCalc('2')">2</button>
+                            <button class="calc-btn" onclick="appendToCalc('3')">3</button>
+                            <button class="calc-btn btn-op" onclick="appendToCalc('-')">−</button>
+                            <button class="calc-btn" onclick="appendToCalc('0')">0</button>
+                            <button class="calc-btn" onclick="appendToCalc('.')">.</button>
+                            <button class="calc-btn btn-equals" onclick="calculateResult()">=</button>
+                            <button class="calc-btn btn-op" onclick="appendToCalc('+')">+</button>
+                            <button class="calc-btn btn-clear" onclick="clearCalc()">C</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cloud Storage -->
+            <section id="storage" class="tool-section">
+                <div class="tool-header">
+                    <h1>☁️ Cloud Storage</h1>
+                    <p>Upload, organize, and manage files with a drive-like experience</p>
+                </div>
+                <div class="tool-content">
+                    <div class="storage-topbar">
+                        <div class="storage-summary-card">
+                            <div class="summary-title">Storage snapshot</div>
+                            <div class="storage-summary-line"><span id="storageSummaryCount">0 files</span> • <span id="storageSummarySize">0 MB</span></div>
+                            <div class="storage-meta">Keep your files organized in one place</div>
+                        </div>
+                        <div class="storage-controls">
+                            <div class="storage-filter">
+                                <input type="text" id="storageSearch" placeholder="Search files by name..." />
+                            </div>
+                            <div class="storage-filter">
+                                <label for="storageSort">Sort by</label>
+                                <select id="storageSort">
+                                    <option value="nameAsc">Name A → Z</option>
+                                    <option value="nameDesc">Name Z → A</option>
+                                    <option value="sizeAsc">Size ↑</option>
+                                    <option value="sizeDesc">Size ↓</option>
+                                    <option value="dateDesc">Newest</option>
+                                    <option value="dateAsc">Oldest</option>
+                                </select>
+                            </div>
+                            <div class="storage-view-toggle">
+                                <button class="btn btn-secondary active" id="storageViewListBtn" type="button">List</button>
+                                <button class="btn btn-secondary" id="storageViewGridBtn" type="button">Grid</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="storage-upload">
+                        <input type="file" id="fileInput" />
+                        <button class="btn btn-primary" id="uploadBtn">Upload File</button>
+                    </div>
+                    <div id="uploadStatus" class="status-message"></div>
+                    <div class="file-list">
+                        <h3>Uploaded Files:</h3>
+                        <div id="filesList" class="files-container"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- To-Do List -->
+            <section id="todo" class="tool-section">
+                <div class="tool-header">
+                    <h1>✓ To-Do List</h1>
+                    <p>Manage your tasks and priorities</p>
+                </div>
+                <div class="tool-content">
+                    <div class="todo-input">
+                        <input type="text" id="todoInput" placeholder="Add a new task..." />
+                        <button class="btn btn-primary" id="addTodoBtn">Add Task</button>
+                    </div>
+                    <ul id="todoList" class="todo-list"></ul>
+                </div>
+            </section>
+
+            <!-- Notes -->
+            <section id="notes" class="tool-section">
+                <div class="tool-header">
+                    <h1>📝 Notes</h1>
+                    <p>Create and auto-save notes</p>
+                </div>
+                <div class="tool-content">
+                    <textarea id="notesEditor" placeholder="Start typing your notes... (auto-saves every 5 seconds)" class="notes-editor"></textarea>
+                    <div id="notesStatus" class="status-message"></div>
+                </div>
+            </section>
+
+            <!-- Unit Converter -->
+            <section id="converter" class="tool-section">
+                <div class="tool-header">
+                    <h1>📏 Unit Converter</h1>
+                    <p>Convert between different units</p>
+                </div>
+                <div class="tool-content">
+                    <div class="converter-container">
+                        <div class="converter-type">
+                            <label>Conversion Type:</label>
+                            <select id="converterType" onchange="updateConverterUnits()">
+                                <option value="length">Length</option>
+                                <option value="weight">Weight</option>
+                                <option value="temperature">Temperature</option>
+                                <option value="volume">Volume</option>
+                            </select>
+                        </div>
+                        <div class="converter-inputs">
+                            <div>
+                                <label>From:</label>
+                                <input type="number" id="converterInput" placeholder="Enter value" />
+                                <select id="fromUnit"></select>
+                            </div>
+                            <div>
+                                <label>To:</label>
+                                <select id="toUnit"></select>
+                            </div>
+                        </div>
+                        <div id="converterOutput" class="output-box"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pomodoro Timer -->
+            <section id="pomodoro" class="tool-section">
+                <div class="tool-header">
+                    <h1>⏱️ Pomodoro Timer</h1>
+                    <p>Focus timer for productivity</p>
+                </div>
+                <div class="tool-content">
+                    <div class="pomodoro-container">
+                        <div class="timer-display" id="timerDisplay">25:00</div>
+                        <div class="timer-controls">
+                            <button class="btn btn-primary" id="startTimer">Start</button>
+                            <button class="btn btn-secondary" id="pauseTimer">Pause</button>
+                            <button class="btn btn-secondary" id="resetTimer">Reset</button>
+                        </div>
+                        <div class="timer-settings">
+                            <label>Focus Time (min):</label>
+                            <input type="number" id="focusTime" value="25" min="1" />
+                            <label>Break Time (min):</label>
+                            <input type="number" id="breakTime" value="5" min="1" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Word Counter -->
+            <section id="wordcount" class="tool-section">
+                <div class="tool-header">
+                    <h1>📄 Word Counter</h1>
+                    <p>Count words, characters, and more</p>
+                </div>
+                <div class="tool-content">
+                    <textarea id="wordCounterInput" placeholder="Paste or type your text here..." rows="10" oninput="updateWordCount()"></textarea>
+                    <div class="word-count-stats">
+                        <div class="stat">
+                            <span class="stat-label">Words:</span>
+                            <span class="stat-value" id="wordCount">0</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Characters:</span>
+                            <span class="stat-value" id="charCount">0</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Sentences:</span>
+                            <span class="stat-value" id="sentenceCount">0</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Paragraphs:</span>
+                            <span class="stat-value" id="paragraphCount">0</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PDF Extractor -->
+            <section id="pdf" class="tool-section">
+                <div class="tool-header">
+                    <h1>📕 PDF Extractor</h1>
+                    <p>Extract text from PDF files</p>
+                </div>
+                <div class="tool-content">
+                    <div class="pdf-upload">
+                        <input type="file" id="pdfInput" accept=".pdf" />
+                        <button class="btn btn-primary" id="extractBtn">Extract Text</button>
+                    </div>
+                    <div id="pdfStatus" class="status-message"></div>
+                    <div id="pdfOutput" class="output-box"></div>
+                </div>
+            </section>
+
+            <!-- Settings -->
+            <section id="settings" class="tool-section">
+                <div class="tool-header">
+                    <h1>⚙️ Settings</h1>
+                    <p>Preferences and configuration</p>
+                </div>
+                <div class="tool-content">
+                            <div class="settings-group">
+                        <h3>Appearance</h3>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="darkModeToggle" />
+                            Dark Mode
+                        </label>
+                    </div>
+                    <div class="settings-group">
+                        <h3>Dashboard & Storage</h3>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="compactDashboardToggle" />
+                            Compact dashboard overview
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="storageGridToggle" />
+                            Default storage grid view
+                        </label>
+                    </div>
+                    <div class="settings-group">
+                        <h3>Data Management</h3>
+                        <button class="btn btn-secondary" id="exportDataBtn">Export All Data</button>
+                        <button class="btn btn-danger" id="clearDataBtn">Clear All Local Data</button>
+                    </div>
+                    <div class="settings-group">
+                        <h3>About</h3>
+                        <p><strong>MyUniMate v1.0.0</strong></p>
+                        <p>Cloud-powered student productivity toolbox</p>
+                        <p>Course: CS23633 Cloud Computing</p>
+                        <p>Student ID: 230701314</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
